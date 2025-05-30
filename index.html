@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>قائمة الطلبات</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      direction: rtl;
+      text-align: center;
+      padding: 40px;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-size: 16px;
+    }
+
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    #price {
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #28a745;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>اختر طلبك من القائمة</h2>
+
+<form action="https://getform.io/f/ajjomzga" method="POST" enctype="multipart/form-data">
+    <label for="name">اسمك:</label>
+    <input type="text" name="name" id="name" placeholder="اكتب اسمك هنا" required />
+
+    <label for="order">اختار الطلب:</label>
+    <select name="order" id="order" required onchange="updatePrice()">
+      <option value="">-- اختر من القائمة --</option>
+      <option value="نت">نت</option>
+      <option value="شاي">شاي</option>
+      <option value="قهوة">قهوة</option>
+      <option value="نعناع">نعناع</option>
+      <option value="ينسون">ينسون</option>
+      <option value="بيبسي">بيبسي</option>
+      <option value="ايس كريم">ايس كريم</option>
+      <option value="شيبسي">شيبسي</option>
+    </select>
+
+    <div id="price">السعر: --</div>
+
+    <button type="submit">إرسال الطلب</button>
+  </form>
+
+  <script>
+    function updatePrice() {
+      const order = document.getElementById("order").value;
+      const priceBox = document.getElementById("price");
+
+      const prices = {
+      "نت": "10 جنيه",
+        "شاي": "10 جنيه",
+        "قهوة": "20 جنيه",
+        "نعناع": "15 جنيه",
+        "ينسون": "10 جنيه",
+        "بيبسي": "20 جنيه",
+        "ايس كريم": "10 جنيه",
+        "شيبسي": "10 جنيه"
+      };
+
+      priceBox.textContent = order ? `السعر: ${prices[order]}` : "السعر: --";
+    }
+  </script>
+
+</body>
+</html>
